@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './product_control.dart';
 import './products.dart';
 
 class ProductManager extends StatefulWidget {
@@ -10,7 +11,13 @@ class ProductManager extends StatefulWidget {
 }
 
 class ProductManagerState extends State<ProductManager> {
-  List<String> _products = [];
+  List<Map<String, String>> _products = [];
+
+  _addProduct(Map<String, String> element) {
+    setState(() {
+      _products.add(element);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +25,9 @@ class ProductManagerState extends State<ProductManager> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.all(10.0),
-          child: RaisedButton(
-            child: Text('Add People'),
-            onPressed: () {
-              setState(() {
-                _products.add('Captain');
-              });
-            },
-          ),
+          child: ProductControl(_addProduct),
         ),
-        Products(_products),
+        Expanded(child: Products(_products)),
       ],
     );
   }

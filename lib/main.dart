@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './product_manager.dart';
+import './pages/home.dart';
 
 main(List<String> args) {
   runApp(MyApp());
@@ -14,12 +14,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('EasyList'),
-        ),
-        body: ProductManager()
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange
       ),
+      home: HomePage(),
     );
   }
 }
